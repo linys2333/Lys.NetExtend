@@ -1,9 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using AnyExtend;
+using Newtonsoft.Json;
 
 namespace AnyExtend
 {
@@ -20,7 +21,7 @@ namespace AnyExtend
         /// <param name="obj">待序列化对象</param>
         /// <param name="encoding">编码方式（默认UTF8）</param>
         /// <returns></returns>
-        public static string XmlSerialize<T>(T obj, Encoding encoding = null)
+        public static string ToXml<T>(T obj, Encoding encoding = null)
         {
             EncodingExt.SetEncoding(ref encoding);
 
@@ -59,9 +60,9 @@ namespace AnyExtend
         /// <param name="path">输出文件路径</param>
         /// <param name="encoding">编码方式（默认UTF8）</param>
         /// <returns></returns>
-        public static string XmlSerialize<T>(T obj, string path, Encoding encoding = null)
+        public static string ToXml<T>(T obj, string path, Encoding encoding = null)
         {
-            var xml = new XmlDocument { InnerXml = XmlSerialize(obj) };
+            var xml = new XmlDocument { InnerXml = ToXml(obj) };
             IOExt.WriteXml(path, xml);
 
             return xml.InnerXml;
@@ -74,7 +75,7 @@ namespace AnyExtend
         /// <param name="isPath">是否从指定路径加载文件</param>
         /// <param name="encoding">编码方式（默认UTF8）</param>
         /// <returns></returns>
-        public static T XmlDeserialize<T>(string xmlOrPath, bool isPath = false, Encoding encoding = null)
+        public static T XmlTo<T>(string xmlOrPath, bool isPath = false, Encoding encoding = null)
         {
             EncodingExt.SetEncoding(ref encoding);
 
@@ -107,6 +108,47 @@ namespace AnyExtend
                 ms.Position = 0;
                 return s.Deserialize(ms) as T;
             }
+        }
+
+        #endregion
+
+        #region Json序列化
+
+        /// <summary>
+        /// 序列化对象为json字符串
+        /// </summary>
+        /// <param name="obj">要序列化的对象</param>
+        /// <param name="isFormat">是否格式化（缩进）</param>
+        /// <returns></returns>
+        public static string ToJson(object obj, bool isFormat = true)
+        {
+            return obj == null
+                ? "{}"
+                : JsonConvert.SerializeObject(obj, isFormat
+                    ? Newtonsoft.Json.Formatting.Indented
+                    : Newtonsoft.Json.Formatting.None);
+        }
+
+        /// <summary>
+        /// 从json字符串还原对象
+        /// </summary>
+        /// <param name="json">json格式字符串</param>
+        /// <param name="type">对象类型</param>
+        /// <returns></returns>
+        public static object JsonTo(string json, Type type)
+        {
+            return JsonConvert.DeserializeObject(json, type);
+        }
+
+        /// <summary>
+        /// 从json字符串还原对象
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="json">json格式字符串</param>
+        /// <returns></returns>
+        public static T JsonTo<T>(string json)
+        {
+            return json.IsEmpty() ? default(T) : JsonConvert.DeserializeObject<T>(json);
         }
 
         #endregion

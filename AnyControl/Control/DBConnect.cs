@@ -382,7 +382,7 @@ namespace AnyControl
             List<DataBase> dbList = _dicHistory.Select(e => e.Value).ToList();
             LogExt.Exec(() =>
             {
-                SerializeExt.XmlSerialize(dbList, ConfigFilePath);
+                SerializeExt.ToXml(dbList, ConfigFilePath);
             });
         }
 
@@ -412,7 +412,7 @@ namespace AnyControl
             // 反序列化
             var dbList = LogExt.Exec
             (
-                () => SerializeExt.XmlDeserialize<List<DataBase>>(GetConfigXml().InnerXml),
+                () => SerializeExt.XmlTo<List<DataBase>>(GetConfigXml().InnerXml),
                 () => new List<DataBase>()
             );
 

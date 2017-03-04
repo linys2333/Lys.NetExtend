@@ -16,10 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainCore", "DomainCore\Do
 		{34AA4389-EAD1-4250-B3DC-37926CAD06EB} = {34AA4389-EAD1-4250-B3DC-37926CAD06EB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LysTest", "..\LysStudyLib\LysConsole\LysTest.csproj", "{EF404F48-E09D-4813-98FD-883F9C47A2EF}"
-	ProjectSection(ProjectDependencies) = postProject
-		{34AA4389-EAD1-4250-B3DC-37926CAD06EB} = {34AA4389-EAD1-4250-B3DC-37926CAD06EB}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{70F5F2E6-2B4D-4341-B294-818B625E827F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +36,10 @@ Global
 		{A604ABF0-5003-4734-9BA9-C89E5176BCEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A604ABF0-5003-4734-9BA9-C89E5176BCEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A604ABF0-5003-4734-9BA9-C89E5176BCEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF404F48-E09D-4813-98FD-883F9C47A2EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF404F48-E09D-4813-98FD-883F9C47A2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF404F48-E09D-4813-98FD-883F9C47A2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF404F48-E09D-4813-98FD-883F9C47A2EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70F5F2E6-2B4D-4341-B294-818B625E827F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70F5F2E6-2B4D-4341-B294-818B625E827F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70F5F2E6-2B4D-4341-B294-818B625E827F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70F5F2E6-2B4D-4341-B294-818B625E827F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

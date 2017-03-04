@@ -146,6 +146,21 @@ namespace AnyExtend
         }
 
         /// <summary>
+        /// 按mod位数补全右侧
+        /// <para>例如，按4位补全，则补全后字符串长度是4的倍数</para>
+        /// </summary>
+        /// <param name="str">源字符串</param>
+        /// <param name="padStr">补全的字符串</param>
+        /// <param name="mod"></param>
+        /// <param name="isAdd">字符串本身长度已是mod的倍数时，是否再补mod位</param>
+        /// <returns></returns>
+        public static string PadRight(this string str, string padStr, int mod, bool isAdd)
+        {
+            int num = str.Length % mod;
+            return str.PadRight(padStr, !isAdd && num == 0 ? 0 : mod - num);
+        }
+
+        /// <summary>
         /// 左侧补全字符串
         /// </summary>
         /// <param name="str">源字符串</param>
