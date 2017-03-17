@@ -7,71 +7,31 @@ namespace AnyExtend
     /// </summary>
     public static class Util
     {
-        #region 类型转换
+        #region 类型相关
 
         /// <summary>
-        /// 类型转换
+        /// 创建有序GUID
         /// </summary>
-        /// <typeparam name="T">转换类型</typeparam>
-        /// <param name="obj">待转换的对象</param>
-        /// <returns>null值将转换成类型默认值</returns>
-        public static T ConvertType<T>(object obj)
+        /// <returns></returns>
+        public static Guid SeqGuid()
         {
-            var result = ConvertType(typeof(T), obj);
-            return result == null ? default(T) : (T) result;
-        }
+            byte[] guidArray = Guid.NewGuid().ToByteArray();
 
-        /// <summary>
-        /// 类型转换
-        /// </summary>
-        /// <param name="type">转换类型</param>
-        /// <param name="obj">待转换的对象</param>
-        /// <returns>null值不做处理，返回null</returns>
-        public static object ConvertType(Type type, object obj)
-        {
-            try
-            {
-                if (obj == null || obj == DBNull.Value)
-                {
-                    // 部分类型的null值做特殊处理
-                    if (type == typeof(string))
-                    {
-                        return "";
-                    }
+            var baseDate = new DateTime(1900, 1, 1);
+            DateTime now = DateTime.Now;
+            var days = new TimeSpan(now.Ticks - baseDate.Ticks);
+            TimeSpan msecs = now.TimeOfDay;
 
-                    if (type == typeof(int))
-                    {
-                        return 0;
-                    }
+            byte[] daysArray = BitConverter.GetBytes(days.Days);
+            byte[] msecsArray = BitConverter.GetBytes((long)(msecs.TotalMilliseconds / 3.333333));
 
-                    return null;
-                }
-            
-                if (type.IsGenericType && type.Name.Contains("Nullable`"))
-                {
-                    Type realType = type.GetGenericArguments()[0];
-                    return ConvertType(realType, obj);
-                }
+            Array.Reverse(daysArray);
+            Array.Reverse(msecsArray);
 
-                if (obj is string)
-                {
-                    if (type == typeof (Guid))
-                    {
-                        return new Guid((string)obj);
-                    }
+            Array.Copy(daysArray, daysArray.Length - 2, guidArray, guidArray.Length - 6, 2);
+            Array.Copy(msecsArray, msecsArray.Length - 4, guidArray, guidArray.Length - 4, 4);
 
-                    if (type == typeof (DateTime))
-                    {
-                        return DateTime.Parse((string)obj);
-                    }
-                }
-
-                return Convert.ChangeType(obj, type) ?? ConvertType(type, obj.ToString());
-            }
-            catch (Exception)
-            {
-                return null;
-            }
+            return new Guid(guidArray);
         }
         
         #endregion

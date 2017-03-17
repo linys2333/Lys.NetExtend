@@ -171,5 +171,17 @@ namespace AnyExtend
         {
             return padStr.Repeat(count) + str;
         }
+
+        /// <summary>
+        /// 格式化，不抛异常
+        /// </summary>
+        public static string Format(string str, params object[] args)
+        {
+            if (args == null || args.Length == 0)
+            {
+                return str;
+            }
+            return string.Format(str, args);
+        }
     }
 }

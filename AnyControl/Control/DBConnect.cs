@@ -79,7 +79,7 @@ namespace AnyControl
         [Browsable(false)]
         public string Database
         {
-            get { return Util.ConvertType<string>(cmbDatabase.SelectedValue); }
+            get { return TypeExt.ConvertType<string>(cmbDatabase.SelectedValue); }
             set { cmbDatabase.SelectedValue = value; }
         }
 
