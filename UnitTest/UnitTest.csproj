@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AnyExtend, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\AnyExtend\bin\Debug\AnyExtend.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -52,15 +56,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AnyExtend\CryptoExtTest.cs" />
     <Compile Include="AnyExtend\EncodingExtTest.cs" />
     <Compile Include="BaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AnyExtend\AnyExtend.csproj">
-      <Project>{34aa4389-ead1-4250-b3dc-37926cad06eb}</Project>
-      <Name>AnyExtend</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AnyExtend\DateExt.cs">
+      <Link>DateExt.cs</Link>
+    </Compile>
     <Compile Include="..\AnyExtend\EnumerableExt.cs">
       <Link>EnumerableExt.cs</Link>
     </Compile>

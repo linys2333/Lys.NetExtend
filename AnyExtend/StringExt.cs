@@ -171,17 +171,5 @@ namespace AnyExtend
         {
             return padStr.Repeat(count) + str;
         }
-
-        /// <summary>
-        /// 忽略大小写的替换
-        /// </summary>
-        /// <param name="str">源字符串</param>
-        /// <param name="find">待替换字符串</param>
-        /// <param name="replacement">替换字符串</param>
-        /// <returns></returns>
-        public static string ReplaceNoCase(this string str, string find, string replacement)
-        {
-            return Strings.Replace(str, find, replacement, 1, -1, CompareMethod.Text);
-        }
     }
 }

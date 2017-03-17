@@ -30,7 +30,3 @@ obj
 bin
 packages
 *.suo
-/App/说明.txt
-/Server/IISHost/Log
-/Server/.vs/config/applicationhost.config
-/App/start.bat

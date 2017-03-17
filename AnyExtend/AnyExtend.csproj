@@ -31,7 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Dll\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -46,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateExt.cs" />
+    <Compile Include="CryptoExt.cs" />
     <Compile Include="EncodingExt.cs" />
     <Compile Include="IOExt.cs" />
     <Compile Include="DBExt.cs" />

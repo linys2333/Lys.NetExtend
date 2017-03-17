@@ -12,7 +12,7 @@ namespace UnitTest.AnyExtend
         [TestMethod]
         public void ToBase64Url()
         {
-            string str = @"dZWFyTA5YTg0dDM0NF+>==";
+            string str = "dZWFyTA5YTg0dDM0NF+>==";
             string actual = EncodingExt.ToBase64Url(str);
             string expect = "ZFpXRnlUQTVZVGcwZERNME5_Ris-PT0";
 
@@ -22,7 +22,7 @@ namespace UnitTest.AnyExtend
         [TestMethod]
         public void FromBase64Url()
         {
-            string str = @"ZFpXRnlUQTVZVGcwZERNME5_Ris-PT0";
+            string str = "ZFpXRnlUQTVZVGcwZERNME5_Ris-PT0";
             string actual = EncodingExt.FromBase64Url(str, null);
             string expect = "dZWFyTA5YTg0dDM0NF+>==";
 
