@@ -3,7 +3,7 @@
 namespace AnyExtend
 {
     /// <summary>
-    /// 提供基础扩展方法
+    /// 提供类型扩展方法
     /// </summary>
     public static class TypeExt
     {
