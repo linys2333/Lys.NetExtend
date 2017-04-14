@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTableExt.cs" />
     <Compile Include="DateExt.cs" />
     <Compile Include="CryptoExt.cs" />
     <Compile Include="EncodingExt.cs" />
