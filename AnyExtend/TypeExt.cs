@@ -34,16 +34,11 @@ namespace AnyExtend
                 if (obj == null || obj == DBNull.Value)
                 {
                     // 部分类型的null值做特殊处理
-                    if (type == typeof(string))
-                    {
-                        return "";
-                    }
-
-                    if (type == typeof(int))
-                    {
-                        return 0;
-                    }
-
+//                    if (type == typeof(string))
+//                    {
+//                        return "";
+//                    }
+                    
                     return null;
                 }
             

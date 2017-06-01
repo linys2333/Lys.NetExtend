@@ -284,15 +284,15 @@ namespace AnyExtend
         /// </summary>
         public static TValue SafeAdd<TKey, TValue>(this IDictionary<TKey,TValue> dic, TKey key, TValue value)
         {
-            TValue oldValue = value;
+            TValue oldValue;
 
-            if (dic.ContainsKey(key))
+            if (dic.TryGetValue(key,out oldValue))
             {
-                oldValue = dic[key];
                 dic[key] = value;
             }
             else
             {
+                oldValue = value;
                 dic.Add(key, value);
             }
 
