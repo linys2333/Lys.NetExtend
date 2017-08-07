@@ -111,7 +111,7 @@ namespace AnyExtend
         }
 
         /// <summary>
-        /// 扩展Except方法
+        /// 扩展Except方法，从first中排除second
         /// </summary>
         public static IEnumerable<T1> Except<T1, T2, TResult>
         (
@@ -122,6 +122,38 @@ namespace AnyExtend
         )
         {
             return first.Where(t1 =>
+                !second.Any(t2 => firstKeySelector(t1).Equals(secondKeySelector(t2)))
+            );
+        }
+
+        /// <summary>
+        /// 扩展Any方法，first中至少有一条记录匹配second
+        /// </summary>
+        public static bool Any<T1, T2, TResult>
+        (
+            this IEnumerable<T1> first,
+            IEnumerable<T2> second,
+            Func<T1, TResult> firstKeySelector,
+            Func<T2, TResult> secondKeySelector
+        )
+        {
+            return first.Any(t1 =>
+                second.Any(t2 => firstKeySelector(t1).Equals(secondKeySelector(t2)))
+            );
+        }
+
+        /// <summary>
+        /// 扩展Any方法，first中至少有一条记录不匹配second
+        /// </summary>
+        public static bool AnyNo<T1, T2, TResult>
+        (
+            this IEnumerable<T1> first,
+            IEnumerable<T2> second,
+            Func<T1, TResult> firstKeySelector,
+            Func<T2, TResult> secondKeySelector
+        )
+        {
+            return first.Any(t1 =>
                 !second.Any(t2 => firstKeySelector(t1).Equals(secondKeySelector(t2)))
             );
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using Microsoft.VisualBasic;
 
 namespace AnyExtend
@@ -170,6 +171,36 @@ namespace AnyExtend
         public static string PadLeft(this string str, string padStr, int count = 1)
         {
             return padStr.Repeat(count) + str;
+        }
+
+        /// <summary>
+        /// 获取特定位置的字符串
+        /// </summary>
+        /// <param name="str">源字符串</param>
+        /// <param name="index">位置</param>
+        /// <returns>超出范围返回空字符串</returns>
+        public static string GetByIndex(this string str, int index)
+        {
+            if (index < 0 || index > str.Length - 1)
+            {
+                return "";
+            }
+            return str.ToCharArray()[index].ToString();
+        }
+
+        /// <summary>
+        /// 生成随机字母
+        /// </summary>
+        /// <param name="isBig">是否大写</param>
+        /// <returns></returns>
+        public static string CreateLetter(bool isBig)
+        {
+            Random ran = new Random(DateTime.Now.Millisecond);
+            byte[] arr =
+            {
+                (byte) (ran.Next(26) + (isBig ? 97 : 65))
+            };
+            return Encoding.ASCII.GetString(arr);
         }
 
         /// <summary>
