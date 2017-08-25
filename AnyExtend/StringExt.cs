@@ -192,15 +192,23 @@ namespace AnyExtend
         /// 生成随机字母
         /// </summary>
         /// <param name="isBig">是否大写</param>
+        /// <param name="num">个数</param>
         /// <returns></returns>
-        public static string CreateLetter(bool isBig)
+        public static string[] CreateLetter(bool isBig, int num)
         {
-            Random ran = new Random(DateTime.Now.Millisecond);
-            byte[] arr =
+            Random ran = new Random(unchecked((int)DateTime.Now.Ticks));
+            string[] arrLetter = new string[num];
+
+            for (int i = 0; i < num; i++)
             {
-                (byte) (ran.Next(26) + (isBig ? 97 : 65))
-            };
-            return Encoding.ASCII.GetString(arr);
+                byte[] arr =
+                {
+                    (byte) (ran.Next(26) + (isBig ? 65 : 97))
+                };
+                arrLetter[i] = Encoding.ASCII.GetString(arr);
+            }
+
+            return arrLetter;
         }
 
         /// <summary>

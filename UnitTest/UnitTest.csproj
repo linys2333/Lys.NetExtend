@@ -56,6 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AnyExtend\DateExtTest.cs" />
     <Compile Include="AnyExtend\CryptoExtTest.cs" />
     <Compile Include="AnyExtend\EncodingExtTest.cs" />
     <Compile Include="BaseTest.cs" />
