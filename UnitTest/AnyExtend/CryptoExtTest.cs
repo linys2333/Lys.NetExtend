@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using AnyExtend;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AnyExtend;
+using System.Security.Cryptography;
 
 namespace UnitTest.AnyExtend
 {
