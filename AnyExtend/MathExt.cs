@@ -67,8 +67,9 @@ namespace AnyExtend
         {
             // double类型不能直接判断0，会有精度丢失
             // 而当除数=0时，计算结果=正负无穷大，并不会报错
+            // 同时被除数=0时，计算结果=NaN
             double result = first / second;
-            result = double.IsInfinity(result) ? 0 : result;
+            result = double.IsNaN(result) || double.IsInfinity(result) ? 0 : result;
             return decimals < 0 ? result : Math.Round(result, decimals);
         }
     }
